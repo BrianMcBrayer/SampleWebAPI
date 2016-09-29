@@ -1,0 +1,8 @@
+language: csharp
+solution: SampleWebAPI.sln
+install:
+ - nuget restore SampleWebAPI.sln
+ - nuget install NUnit.Runners -Version 3.4.1 -OutputDirectory testrunner
+script:
+ - xbuild /p:Configuration=Release SampleWebAPI.sln
+ - mono ./testrunner/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe ./SampeWebAPITests/bin/Release/SampeWebAPITests.dll
